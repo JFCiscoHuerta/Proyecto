@@ -1,30 +1,40 @@
 import { Schema, model } from "mongoose";
 
-const TeamSchema = new Schema(
+const TeamSchema = new Schema([
     {
         name: {
             type: String,
             required: true
         },
-        members: [
+    },
+    {
+        id_members: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'users'
+                required: true
             }
         ],
+    },
+    {
         leader: {
             type: Schema.Types.ObjectId,
-            ref: 'users'
-        },
-        round: {
-            type: Number,
             required: true
         },
-        calification: {
-            type: Schema.Types.ObjectId,
-            ref: 'califications'
-        }
+    }, {
+        round: {
+            type: Number,
+            default: 0
+        },
+    },
+    {
+        grades: [
+            {
+                type: Schema.Types.ObjectId,
+                required: true
+            }
+        ]
     }
-)
+    
+])
 
 export const TeamModel = model("teams", TeamSchema)
