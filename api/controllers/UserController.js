@@ -38,7 +38,7 @@ export default {
             if (!isPasswordValid) {
                 return res.status(403).json({ msg: "Credenciales inválidas" });
             }
-            const token = await jwt.sign({ _id: user._id, email: user.email }, process.env.PRIVATE_KEY);
+            const token = await jwt.sign(JSON.stringify(user), process.env.PRIVATE_KEY);
     
             return res.status(202).json({token})
 
@@ -56,7 +56,7 @@ export default {
             }
             user.name = req.body.name ? req.body.name : user.name
             user.email = req.body.email ? req.body.email : user.email
-            user.password = req.body.password ? req.body.password : user.password
+            user.password = req.body.password ? await bcrypt.hash(req.body.password, 13) : user.password
             user.CURP = req.body.CURP ? req.body.CURP : user.CURP
     
             await UserModel.findOneAndUpdate(user._id, user);
