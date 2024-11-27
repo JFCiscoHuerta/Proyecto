@@ -60,12 +60,14 @@ export const CreateEvent = () => {
                     <Card.Title>Registrar Evento</Card.Title>
 
                     <Form>
-                        <Row>
-                            <Col>
+                        <Row className="justify-content-center mb-3">
+                            <Col md={6}>
                                 <Form.Group>
                                     <Form.Label>Titulo del evento:</Form.Label>
                                     <Form.Control name="name" onChange={onChange} />
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group>
                                     <Form.Label>Numero maximo de rondas:</Form.Label>
                                     <Form.Control name="max_rounds" onChange={onChange} />
@@ -73,42 +75,39 @@ export const CreateEvent = () => {
                             </Col>
                         </Row>
 
-                        <Row>
+                        <Row >
                             <Col>
-                                <p>Metricas:</p>
+                                <p className="text-center">Metricas:</p>
                                 {event.metrics.map((metrica, id) => (
-                                    <Row key={id}>
-                                        <Col>
+                                    <Row className="mb-3 justify-content-center" key={id}>
+                                        <Col md={6}>
                                             <Form.Group>
                                                 <Form.Label>Descripcion:</Form.Label>
                                                 <Form.Control onChange={(evento) => nuevaMetrica(id, evento)} name="description" value={metrica.description}/>
                                             </Form.Group>
                                         </Col>
-                                        <Col>
+                                        <Col md={6}>
                                             <Form.Group>
                                                 <Form.Label>Puntos maximos:</Form.Label>
                                                 <Form.Control onChange={(evento) => nuevaMetrica(id, evento)} name="max_points" type="number" value={metrica.max_points}/>
                                             </Form.Group>
                                         </Col>
-                                        <Col>
-                                            <Button onClick={() => removerMetrica(id)}>
-                                                Eliminar
-                                            </Button>
+                                        <Col className="d-flex align-items-end mt-2 mb-1">
+                                            <Button variant="danger" onClick={() => removerMetrica(id)}>Eliminar</Button>
                                         </Col>
                                     </Row>
                                 ))}
-                                <Button onClick={agregarMetrica}>
-                                    Agregar Métrica
-                                </Button>
+                                <Row className="justify-content-center mt-3">
+                                    <Button onClick={agregarMetrica}>Agregar Metrica</Button>
+                                </Row>
                             </Col>
                         </Row>
-                        <Button onClick={() => onSubmit()}>Crear Evento</Button>
+                        <Row className="justify-content-center mt-4 mb-3">
+                            <Button variant="success" onClick={() => onSubmit()}>Guardar Evento</Button>
+                        </Row>
                     </Form>
-
                 </Card.Body>
-
             </Card>
         </Container>
     );
-
 }
