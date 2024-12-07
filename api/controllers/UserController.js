@@ -60,12 +60,21 @@ export default {
             user.CURP = req.body.CURP ? req.body.CURP : user.CURP
     
             await UserModel.findOneAndUpdate(user._id, user);
-            res.status(201).json({msg:"Usuario actualizadp con exito"})
+            return res.status(201).json({msg:"Usuario actualizadp con exito",})
 
         } catch (error) {
             res.status(500).json({msg: "Ocurrio un error al actualizar tu perfil"})
             console.log(error)
         }
-    }
+    },
 
+    getUsers: async (req, res) => {
+        try {
+            const users = await UserModel.find();
+            return res.status(200).json(users);
+        } catch (error) {
+            res.status(500).json({msg: "Ocurrio un error al obtener los usuarios"})
+            console.log(error)
+        }
+    }
 }

@@ -33,4 +33,8 @@ app.post("/event/create", EventsController.createEvent)
 app.post("/team/create", TeamsController.createTeam)
 app.post("/events/:idEvent/register/:id", TeamsController.registerEvent);
 
+app.get("/user/list", UserController.getUsers)
+app.get("/event/list", EventsController.getEvents)
+app.get("/team/list", TeamsController.getTeams)
+
 app.listen(4000, () =>console.log("Server is running"))

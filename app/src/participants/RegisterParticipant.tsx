@@ -2,14 +2,7 @@ import axios from "axios";
 import { useState } from "react"
 import { Button, Card, Container, Form } from "react-bootstrap"
 import Swal from "sweetalert2";
-
-interface IUser {
-    name: string;
-    email: string;
-    CURP: string;
-    password: string;
-    rol: string;
-}
+import { IUser } from "../Types";
 
 export const RegisterParticipant = () => {
     

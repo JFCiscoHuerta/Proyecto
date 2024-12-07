@@ -41,5 +41,16 @@ export default{
         } catch(error) {
             return res.status(500).json({msg: "Fallo al registrar evento"})
         }
+    },
+
+    
+    getTeams: async (req, res) => {
+        try {
+            const teams = await TeamModel.find();
+            return res.status(200).json(teams)
+        } catch (error) {
+            res.status(500).json({msg: "Ocurrio un error al obtener los teams"})
+            console.log(error)
+        }
     }
 }

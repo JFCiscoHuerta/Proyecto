@@ -8,11 +8,31 @@ import {
 } from "react-router-dom"
 import { RegisterParticipant } from './participants/RegisterParticipant';
 import { CreateEvent } from './admins/CreateEvents';
+import { Dashboard } from './admins/Dashboard';
+import { ListUsers } from './components/ListUsers';
+import { ListEvents } from './components/ListEvents';
+import { ListTeams } from './components/ListTeams';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login/>
+  },
+  {
+    path: "/home",
+    element: <Dashboard/>
+  },
+  {
+    path: "/user/list",
+    element: <ListUsers/>
+  },
+  {
+    path: "/event/list",
+    element: <ListEvents/>
+  },
+  {
+    path: "/team/list",
+    element: <ListTeams/>
   },
   {
     path: "/register",
@@ -23,7 +43,7 @@ const router = createBrowserRouter([
     element: <div>Hola desde pocoyo</div>
   },
   {
-    path: "/register-event",
+    path: "/create/event",
     element: <CreateEvent/>
   }
 ])
