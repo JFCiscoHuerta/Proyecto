@@ -12,6 +12,7 @@ import { Dashboard } from './admins/Dashboard';
 import { ListUsers } from './components/ListUsers';
 import { ListEvents } from './components/ListEvents';
 import { ListTeams } from './components/ListTeams';
+import { RegisterTeam } from './participants/RegisterTeam';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/create/event",
     element: <CreateEvent/>
+  },
+  {
+    path: "/create/team",
+    element: <RegisterTeam/>
   }
 ])
 
