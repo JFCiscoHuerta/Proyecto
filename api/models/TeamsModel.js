@@ -11,7 +11,6 @@ const TeamSchema = new Schema([
         id_members: [
             {
                 type: Schema.Types.ObjectId,
-                required: true
             }
         ],
     },
@@ -30,7 +29,6 @@ const TeamSchema = new Schema([
         grades: [
             {
                 type: Schema.Types.ObjectId,
-                required: true
             }
         ]
     }

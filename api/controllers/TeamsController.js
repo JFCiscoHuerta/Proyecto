@@ -8,14 +8,13 @@ export default{
         try{
             const team = {
                 name: req.body.name,
-                id_members: req.body.id_members,
-                leader: req.body.id_leader,
+                leader: req.body.leader,
     
             };
             await TeamModel.create(team);
             return res.status(201).json({msg:"Grupo creado con exito"});
         } catch(error) {
-            console.error
+            console.error(error)
             return res.status(500).json({msg: "Ocurrio un error al guardar el equipo"});
         }
     },
